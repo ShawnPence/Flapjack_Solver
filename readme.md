@@ -1,6 +1,6 @@
 # Flapjack Solver
 
-A python solver for the [Flapjack Fwop puzzle at https://cassidoo.github.io/flapjack-fwop](https://cassidoo.github.io/flapjack-fwop/)
+A python solver for the Flapjack Fwop puzzle at [https://cassidoo.github.io/flapjack-fwop](https://cassidoo.github.io/flapjack-fwop/)
 
 The solver is a single python file that takes input as the buttered/unbuttered state of each pancake, starting with the top-left pancake.  It returns a list of pancakes to click in order.
 

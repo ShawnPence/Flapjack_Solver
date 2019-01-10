@@ -32,7 +32,7 @@ def solve_ff(starting_state):
             if current_board == 33554431:
                 #winning moves found (25 least significant bits are 1)
                 current[0].append(i)
-                return current[0]
+                return remove_dups(current[0])
             if current_board not in reached:
                 current_moves = copy.copy(current[0])
                 current_moves.append(i)
@@ -43,6 +43,33 @@ def solve_ff(starting_state):
 
 def bitcount(moveitem):
     return bin(moveitem[1]).count('1')
+
+def remove_dups(solution):
+    
+    #any flapjack should be clicked 0 or 1 times, but
+    #solver runs faster if allowed to explore unnecessary extra clicks
+    
+    #remove unnecessary extra clicks (remove pairs of same number, leaving
+    #  0 or 1 of each number)
+    
+    if len(solution) < 2:
+        return solution
+    solution.sort()
+    i = 1
+    remove_i = []
+    while(i < len(solution)):
+        if solution[i] == solution[i-1]:
+            remove_i.append(i-1)
+            remove_i.append(i)
+            i += 2
+        else:
+            i += 1
+    
+    while len(remove_i) > 0:
+        del solution[remove_i.pop()]
+
+    return solution
+
 
 print("enter the buttered states of the pancakes as a string of 1s and 0s")
 print("start at the top left row, move right, then go to the next row")
